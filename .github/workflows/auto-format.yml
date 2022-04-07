@@ -20,3 +20,7 @@ jobs:
     steps:
       - name: echo changed files
         run: echo ${{ needs.Obtain-modified-files.outputs.all }}
+      - name: echo modified files in this commit
+        run: echo ${{ github.event.commits[modified] }}
+      - name: echo added filed in this commit
+        run: echo ${{ github.event.commits[added] }}

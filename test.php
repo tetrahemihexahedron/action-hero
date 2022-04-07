@@ -1,4 +1,5 @@
 <?php
   // A comment
-  echo "Hey World";
+  echo "Hey World\n";
+  echo "Goodbye Universe\n";
 ?>

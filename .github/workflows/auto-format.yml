@@ -22,6 +22,6 @@ jobs:
         run: echo ${{ needs.Obtain-modified-files.outputs.changed }}
       - name: Install PHP-CS-Fixer
         run: |
-        wget https://github.com/FriendsOfPHP/PHP-CS-Fixer/releases/download/v3.0.1/php-cs-fixer.phar -O php-cs-fixer
-        chmod a+x php-cs-fixer
-        php-cs-fixer --dry-run --diff fix ${{ needs.Obtain-modified-files.outputs.changed }}
+          wget https://github.com/FriendsOfPHP/PHP-CS-Fixer/releases/download/v3.0.1/php-cs-fixer.phar -O php-cs-fixer
+          chmod a+x php-cs-fixer
+          php-cs-fixer --dry-run --diff fix ${{ needs.Obtain-modified-files.outputs.changed }}

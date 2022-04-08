@@ -20,9 +20,10 @@ jobs:
     steps:
       - name: echo changed files
         run: echo ${{ needs.Obtain-modified-files.outputs.changed }}
+      - name: Install php
+        run: apt install php8.0
       - name: Install PHP-CS-Fixer
         run: |
           wget https://github.com/FriendsOfPHP/PHP-CS-Fixer/releases/download/v3.0.1/php-cs-fixer.phar -O php-cs-fixer
           chmod a+x php-cs-fixer
-          PHP_CS_FIXER_IGNORE_ENV=1
           ./php-cs-fixer --dry-run --diff fix ${{ needs.Obtain-modified-files.outputs.changed }}

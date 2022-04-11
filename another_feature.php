@@ -1,3 +1,1 @@
-<?php
-echo "Another new feature!";
- ?>
+<?= 'Another new feature!';

@@ -29,7 +29,11 @@ jobs:
           args: --config=.php-cs-fixer.php
 
   commit-changes:
-    # See https://github.com/marketplace/actions/git-auto-commit
-    uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          commit_message: Action Hero: PHP-CS-Fixer
+    needs: php-cs-fixer
+    runs-on: ubuntu-latest
+
+    steps:
+      # See https://github.com/marketplace/actions/git-auto-commit
+      uses: stefanzweifel/git-auto-commit-action@v4
+      with:
+        commit_message: Action Hero: PHP-CS-Fixer

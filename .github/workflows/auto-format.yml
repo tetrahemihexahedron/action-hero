@@ -13,13 +13,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - run: echo The github.event.pull_request.merged is ${{ github.event.pull_request.merged }}
-      - run: echo The event_name is ${{ github.event_name }}
-      - run: echo The github.head_ref is ${{ github.head_ref }}
-      - run: echo The github.base_ref is ${{ github.base_ref }}
-      - run: echo The github.ref is ${{ github.ref }}
-      - run: echo The github.ref_name is ${{ github.ref_name }}
-      - run: echo the github.sha is ${{ github.sha }}
       - uses: actions/checkout@v3
 
       - name: Run PHP-CS-Fixer

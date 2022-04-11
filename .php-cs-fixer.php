@@ -19,8 +19,6 @@ return $config->setRules([
 	'return_assignment' => false,
 	'no_trailing_whitespace_in_comment' => false,
 	'ordered_class_elements' => false,
-	'single_line_comment_spacing' => false,
-	'no_unneeded_import_alias' => false,
 ])
 	->setIndent("\t")
 	->setFinder($finder);

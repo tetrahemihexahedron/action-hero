@@ -1,14 +1,10 @@
 name: auto-formatting action hero
+
 on:
   push:
     branches:
       - master
       - devel
-  # want to trigger workflow when pull-requests are merged
-  # merging automatically closes the pull-request
-  pull_request:
-    types:
-      - closed
   # workflow_dispatch allows the action to be run manually
   workflow_dispatch:
 

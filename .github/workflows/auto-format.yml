@@ -18,6 +18,11 @@ jobs:
 
     steps:
       - run: echo ${{ github.event_name }}
+      - run: echo The github.head_ref is ${{ github.head_ref }}
+      - run: echo The github.base_ref is ${{ github.base_ref }}
+      - run: echo The github.ref is ${{ github.ref }}
+      - run: echo The github.ref_name is ${{ github.ref_name }}
+      - run: echo the github.sha is ${{ github.sha }}
       - uses: actions/checkout@v3
         # Ref needs to be explicit for pull-request trigger
         with:
@@ -34,6 +39,7 @@ jobs:
 
     steps:
       # See https://github.com/marketplace/actions/git-auto-commit
+      # TODO: specify spcefic version
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: "Action Hero: PHP-CS-Fixer"

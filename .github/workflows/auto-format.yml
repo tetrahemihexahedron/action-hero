@@ -20,10 +20,7 @@ jobs:
       - run: echo The github.ref_name is ${{ github.ref_name }}
       - run: echo the github.sha is ${{ github.sha }}
       - uses: actions/checkout@v3
-        # Ref needs to be explicit for pull-request trigger
-        with:
-          ref: ${{ github.head_ref }}
-
+      
       - name: Run PHP-CS-Fixer
         uses: docker://oskarstark/php-cs-fixer-ga
         with:

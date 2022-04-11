@@ -36,4 +36,4 @@ jobs:
       # See https://github.com/marketplace/actions/git-auto-commit
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          commit_message: Action Hero: PHP-CS-Fixer
+          commit_message: "Action Hero: PHP-CS-Fixer"

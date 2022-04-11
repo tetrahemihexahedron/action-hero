@@ -4,6 +4,8 @@ on:
     branches:
       - master
       - devel
+  # want to trigger workflow when pull-requests are merged
+  # merging automatically closes the pull-request
   pull_request:
     types:
       - closed
@@ -13,15 +15,22 @@ on:
 jobs:
   php-cs-fixer:
     runs-on: ubuntu-latest
+    if: github.event_name == push || github.event_name == pull_request && github.event.pull_request.merged == true
+
     steps:
+      - run: echo ${{ github.event_name }}
       - uses: actions/checkout@v3
+        # Ref needs to be explicit for pull-request trigger
+        with:
+          ref: ${{ github.head_ref }}
 
       - name: Run PHP-CS-Fixer
         uses: docker://oskarstark/php-cs-fixer-ga
         with:
           args: --config=.php-cs-fixer.php
 
-      - name: Commit changes
-        uses: stefanzweifel/git-auto-commit-action@v4
+  commit-changes:
+    # See https://github.com/marketplace/actions/git-auto-commit
+    uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          commit_message: PHP-CS-Fixer run
+          commit_message: Action Hero: PHP-CS-Fixer

@@ -1,1 +1,1 @@
-<?= 'Another new feature!'; ?>
+<?= 'Another new feature!';

@@ -9,7 +9,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  php-cs-fixer:
+  autoformat:
     runs-on: ubuntu-latest
 
     steps:
@@ -21,12 +21,6 @@ jobs:
         with:
           args: --config=.php-cs-fixer.php --diff
 
-  commit-changes:
-    needs: php-cs-fixer
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v3
       # See https://github.com/marketplace/actions/git-auto-commit
       # TODO: specify specfic version
       - uses: stefanzweifel/git-auto-commit-action@v4

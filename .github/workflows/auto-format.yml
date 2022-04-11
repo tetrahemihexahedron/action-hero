@@ -17,7 +17,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - run: echo ${{ github.event_name }}
+      - run: echo The github.event.pull_request.merged is ${{ github.event.pull_request.merged }}
+      - run: echo The event_name is ${{ github.event_name }}
       - run: echo The github.head_ref is ${{ github.head_ref }}
       - run: echo The github.base_ref is ${{ github.base_ref }}
       - run: echo The github.ref is ${{ github.ref }}
@@ -25,8 +26,8 @@ jobs:
       - run: echo the github.sha is ${{ github.sha }}
       - uses: actions/checkout@v3
         # Ref needs to be explicit for pull-request trigger
-        with:
-          ref: ${{ github.head_ref }}
+        #with:
+        #  ref: ${{ github.head_ref }}
 
       - name: Run PHP-CS-Fixer
         uses: docker://oskarstark/php-cs-fixer-ga
@@ -39,7 +40,7 @@ jobs:
 
     steps:
       # See https://github.com/marketplace/actions/git-auto-commit
-      # TODO: specify spcefic version
+      # TODO: specify specfic version
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: "Action Hero: PHP-CS-Fixer"

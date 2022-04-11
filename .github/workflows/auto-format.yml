@@ -1,26 +1,25 @@
-name: PHP-CS-Fixer
-on: [push]
+name: auto-formatting action hero
+on:
+  push:
+    branches:
+      - master
+      - devel
+  pull_request:
+    types:
+      - closed
+  # workflow_dispatch allows the action to be run manually
+  workflow_dispatch:
+
 jobs:
-  Obtain-modified-files:
+  php-cs-fixer:
     runs-on: ubuntu-latest
-    outputs:
-      changed: ${{ steps.changes.outputs.changed }}
     steps:
-      - name: checkout branch with history
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-      - name: get changed files
-        id: changes
-        run: echo "::set-output name=changed::$(git diff --name-only --diff-filter=ACMRT ${{ github.event.before }}..${{ github.event.after }} | xargs)"
-  Print-files:
-    runs-on: ubuntu-latest
-    needs: Obtain-modified-files
-    if: ${{ needs.Obtain-modified-files.outputs.changed }}
-    steps:
-      - name: echo changed files
-        run: echo ${{ needs.Obtain-modified-files.outputs.changed }}
-      - name: Php-CS-Fixer
+      - uses: actions/checkout@v3
+
+      - name: Run PHP-CS-Fixer
         uses: docker://oskarstark/php-cs-fixer-ga
+
+      - name: Commit changes
+        uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          args: --diff --dry-run
+          commit_message: PHP-CS-Fixer run

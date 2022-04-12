@@ -2,9 +2,9 @@ name: auto-formatting action hero
 
 on:
   push:
-    branches:
-      - master
-      - devel
+  #  branches:
+  #    - master
+  #    - devel
   # workflow_dispatch allows the action to be run manually
   workflow_dispatch:
 
@@ -35,7 +35,17 @@ jobs:
         run: black . -v
 
       # See https://github.com/marketplace/actions/git-auto-commit
-      - uses: stefanzweifel/git-auto-commit-action@v4
+      - id: auto_commit
+        uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: "Autoformatted by Autoformatting Action Hero"
           commit_user_name: "Autoformatting Action Hero"
+
+      - name: Give cookie
+        if: steps.auto_commit.outputs.changes_detected == 'false'
+        run: |
+          echo << EOF
+          Hey there.
+            there is some white space
+and no white space.
+          EOF

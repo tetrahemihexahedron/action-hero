@@ -21,17 +21,22 @@ jobs:
         with:
           args: --config=.php-cs-fixer.php --diff
 
-      - name: List files
-        run: |
-          pwd
-          ls
-
       - name: Install prettier
-        run: npm install --global prettier@2.6.2
+        run: |
+          npm install --global prettier@2.6.2
+          prettier --version
 
       - name: Run prettier
         # Uses config file .prettierrc
         run: prettier --write .
+
+      - name: Install black
+        run: |
+          pip install black
+          black --version
+
+      - name: Run black
+        run: black . -v
 
       # See https://github.com/marketplace/actions/git-auto-commit
       - uses: stefanzweifel/git-auto-commit-action@v4

@@ -2,9 +2,9 @@ name: auto-formatting action hero
 
 on:
   push:
-  #  branches:
-  #    - master
-  #    - devel
+    branches:
+      - master
+      - devel
   # workflow_dispatch allows the action to be run manually
   workflow_dispatch:
 
@@ -41,7 +41,7 @@ jobs:
           commit_message: "Autoformatted by Autoformatting Action Hero"
           commit_user_name: "Autoformatting Action Hero"
 
-      - name: Give cookie or chastise
+      - name: Give cookie
         if: steps.auto_commit.outputs.changes_detected == 'false'
         run: |
           echo << "EOF"
@@ -53,6 +53,8 @@ jobs:
           .-,_\ /\ /_,-.<<   >>  //  \\  //  \\       |||_         \\    ||   \\,-.<<   >>
            \_)-'  '-(_/(__) (__)(_")("_)(_")("_)     (__)_)       (__)   (_")  (_/(__) (__)
           EOF
+
+      - name: Chastise
         if: steps.auto_commit.outputs.changes_detected == 'true'
         run: |
           echo << "EOF"

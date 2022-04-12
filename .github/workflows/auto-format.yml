@@ -55,7 +55,7 @@ jobs:
           EOF
 
       - name: Chastise
-        if: steps.auto_commit.outputs.changes_detected == "true"
+        if: steps.auto_commit.outputs.changes_detected == 'true'
         run: |
           echo << "EOF"
            ___     _       _       _

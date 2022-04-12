@@ -19,7 +19,7 @@ jobs:
         # See https://hub.docker.com/r/oskarstark/php-cs-fixer-ga
         uses: docker://oskarstark/php-cs-fixer-ga:3.7.0
         with:
-          args: --config=.php-cs-fixer.php --diff
+          args: --config=.php-cs-fixer.php --diff -vvv
 
       - name: Install prettier
         run: |

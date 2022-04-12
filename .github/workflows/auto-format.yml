@@ -21,8 +21,15 @@ jobs:
         with:
           args: --config=.php-cs-fixer.php --diff
 
+      - name: Install prettier
+        run: npm install --global prettier@2.6.2
+
+      - name: Run prettier
+        run: prettier --write .
+
       # See https://github.com/marketplace/actions/git-auto-commit
       # TODO: specify specfic version
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          commit_message: "Action Hero: PHP-CS-Fixer"
+          commit_message: "Autoformatted by Autoformatting Action Hero"
+          commit_user_name: "Autoformatting Action Hero"

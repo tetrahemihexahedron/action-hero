@@ -26,7 +26,7 @@ jobs:
 
       - name: Run prettier
         # Uses config file .prettierrc
-        run: prettier --write .
+        run: prettier --loglevel debug --write .
 
       - name: Install black
         run: pip install black==22.3.0

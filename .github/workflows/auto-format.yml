@@ -35,7 +35,8 @@ jobs:
         run: black . -v
 
       # See https://github.com/marketplace/actions/git-auto-commit
-      - uses: stefanzweifel/git-auto-commit-action@v4
+      - id: auto_commit
+        uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: "Autoformatted by Autoformatting Action Hero"
           commit_user_name: "Autoformatting Action Hero"
